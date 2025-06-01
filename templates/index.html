@@ -168,20 +168,29 @@
 <body>
 
   <!-- Navbar -->
- <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top bg-white">
   <div class="container">
-  <a class="navbar-brand" href="#"><img src="/static/logo.png.png" alt="Logo"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#">
+      <img src="/static/logo.png.png" alt="Logo" height="40">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
+      aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+    <div class="collapse navbar-collapse justify-content-end" id="navContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About Us</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
+
   <!-- Hero Section -->
   <section class="hero" id="home">
     <h1>StartupCoaching.in</h1>
