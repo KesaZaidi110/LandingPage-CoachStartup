@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StartupCoaching.in</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-purple: #6f42c1;
+      --dark-purple: #5a32a3;
+      --white: #ffffff;
+      --light-bg: rgba(255, 255, 255, 0.85);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: var(--white);
+      background: linear-gradient(135deg, #6f42c1, #3c1a78);
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    .navbar {
+      background-color: var(--white);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar-brand img {
+      height: 40px;
+    }
+
+    .nav-link {
+      color: var(--primary-purple) !important;
+      font-weight: 500;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      text-decoration: underline;
+    }
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--white);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 700px;
+      color: #eee;
+    }
+
+    .section {
+      padding: 60px 20px;
+      backdrop-filter: blur(12px);
+      background-color: var(--light-bg);
+      color: var(--primary-purple);
+      border-radius: 12px;
+      margin: 50px auto;
+      max-width: 960px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
+      backdrop-filter: blur(8px);
+      color: var(--white);
+    }
+
+    .form-control {
+      background-color: var(--light-bg);
+      border: 1px solid #ccc;
+      color: #000;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-purple);
+      box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
+    }
+
+    .btn-primary {
+      background-color: var(--primary-purple);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--dark-purple);
+    }
+
+    .newsletter-img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(111, 66, 193, 0.6);
+      transition: transform 0.3s ease;
+    }
+
+    .newsletter-img:hover {
+      transform: scale(1.05);
+    }
+
+    .news-section .card {
+      background-color: rgba(131, 89, 210, 0.803);
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .news-section .card:hover {
+      background-color: rgba(111, 66, 193, 0.35);
+    }
+
+    .news-section .btn-outline-primary {
+      border-color: var(--primary-purple);
+      color: var(--primary-purple);
+    }
+
+    .news-section .btn-outline-primary:hover {
+      background-color: var(--primary-purple);
+      color: var(--white);
+    }
+
+    .section h4 {
+      font-weight: 600;
+      color: var(--primary-purple);
+      margin-bottom: 20px;
+    }
+
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .newsletter-img {
+        width: 180px;
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="/static/logo.png.png" alt="Logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navContent">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <h1>StartupCoaching.in</h1>
+    <p>Your launchpad to Series A — smarter, faster, stronger.</p>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="section">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <div class="card p-4">
+          <h4 class="text-center mb-3">Join Our Newsletter</h4>
+
+          {% if success %}
+          <div class="alert alert-success" role="alert">
+            Thank you for subscribing!
+          </div>
+          {% endif %}
+
+          <form method="POST" action="/">
+            <input class="form-control my-2" type="text" name="name" placeholder="Your Name" required />
+            <input class="form-control my-2" type="email" name="email" placeholder="Your Email" required />
+            <button class="btn btn-primary w-100 mt-2">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="/static/pexels-olly-3760069.jpg" alt="Newsletter" class="newsletter-img" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Startup News -->
+  <section class="section news-section">
+    <div class="container">
+      <h4 class="text-center">Startup News</h4>
+      <div class="row">
+        {% for article in news_data %}
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">{{ article.title }}</h5>
+              <a href="{{ article.url }}" class="btn btn-sm btn-outline-primary mt-3" target="_blank">Read More</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section about-section" id="about">
+    <h4 class="text-center">About Us</h4>
+    <p><strong>StartupCoaching.in</strong> is India’s pioneering platform designed to support startups through their most critical growth phase. We bridge the gap between seed stage and Series A by offering a powerful mix of AI-driven insights, mentorship, and actionable strategies.</p>
+    <p>Our goal is simple — to help Indian startups thrive. With expert coaches, curated tools, and a vibrant community, we ensure your startup journey is smarter, faster, and more resilient.</p>
+    <p><strong>Our Vision</strong>: To create a robust startup ecosystem where every founder has the guidance and resources to succeed.</p>
+  </section>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a.nav-link').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+
+</body>
+</html>
